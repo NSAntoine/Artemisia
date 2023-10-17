@@ -42,10 +42,47 @@
     [menu addItem:itm];
     
     [menu addItem: NSMenuItem.separatorItem];
+    
+    NSMenuItem *posItm = [[NSMenuItem alloc] initWithTitle:@"HUD Position" action:nil keyEquivalent:@""];
+    
+    posItm.submenu = [self positionMenu];
+    
+    [menu addItem:posItm];
+    
+    [menu addItem: NSMenuItem.separatorItem];
     NSMenuItem *quit = [menu addItemWithTitle:@"Quit" action:@selector(terminateApp) keyEquivalent:@"q"];
     quit.target = self;
     
     self.statusItem.menu = menu;
+}
+
+- (NSMenu *)positionMenu {
+    NSMenu *menu = [[NSMenu alloc] init];
+    
+    DesktopViewPosition currPos = [DesktopViewController HUDPosition];
+    
+    NSMenuItem *topLeft = [menu addItemWithTitle:@"Top Left" action:@selector(positionMenuItemAction:) keyEquivalent:@""];
+    topLeft.tag = DesktopViewPositionTopLeft;
+    topLeft.state = currPos == DesktopViewPositionTopLeft ? NSControlStateValueOn : NSControlStateValueOff;
+    
+    NSMenuItem *topRight = [menu addItemWithTitle:@"Top Right (Default)" action:@selector(positionMenuItemAction:) keyEquivalent:@""];
+    topRight.tag = DesktopViewPositionTopRight;
+    topRight.state = currPos == DesktopViewPositionTopRight ? NSControlStateValueOn : NSControlStateValueOff;
+    
+    NSMenuItem *bottomLeft = [menu addItemWithTitle:@"Bottom Left" action:@selector(positionMenuItemAction:) keyEquivalent:@""];
+    bottomLeft.tag = DesktopViewPositionBottomLeft;
+    bottomLeft.state = currPos == DesktopViewPositionBottomLeft ? NSControlStateValueOn : NSControlStateValueOff;
+    
+    NSMenuItem *bottomRight = [menu addItemWithTitle:@"Bottom Right" action:@selector(positionMenuItemAction:) keyEquivalent:@""];
+    bottomRight.tag = DesktopViewPositionBottomRight;
+    bottomRight.state = currPos == DesktopViewPositionBottomRight ? NSControlStateValueOn : NSControlStateValueOff;
+    
+    return menu;
+}
+
+-(void)positionMenuItemAction: (NSMenuItem *)item {
+    [[NSUserDefaults standardUserDefaults] setInteger:item.tag forKey:@"DesktopViewPosition"];
+    item.parentItem.submenu = [self positionMenu];
 }
 
 -(void)terminateApp {

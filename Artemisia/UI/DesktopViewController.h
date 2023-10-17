@@ -11,12 +11,20 @@
 #import <Cocoa/Cocoa.h>
 #import "EventKind.h"
 
+typedef NS_ENUM(NSUInteger, DesktopViewPosition) {
+    DesktopViewPositionTopLeft,
+    DesktopViewPositionTopRight,
+    DesktopViewPositionBottomLeft,
+    DesktopViewPositionBottomRight,
+};
+
 @interface DesktopViewController: NSViewController
 
 @property NSView *barView;
 @property NSTimer *timer;
 
 -(void)retainOrAddBarViewWithKind: (EventBarKind)kind;
++(DesktopViewPosition)HUDPosition;
 
 @end
 

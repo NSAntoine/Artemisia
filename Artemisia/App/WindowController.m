@@ -28,7 +28,7 @@
 //            window.level = CGWindowLevelForKey(kCGMaximumWindowLevelKey);
             window.level = NSFloatingWindowLevel;
             window.collectionBehavior = NSWindowCollectionBehaviorCanJoinAllSpaces;
-            [window setFrame:NSScreen.mainScreen.visibleFrame display:YES];
+            [window setFrame:NSScreen.mainScreen.frame display:YES];
     }
     
     return ret;

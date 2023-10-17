@@ -55,20 +55,54 @@
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
 }
 
++(DesktopViewPosition)HUDPosition {
+    NSNumber *num = [[NSUserDefaults standardUserDefaults] objectForKey:@"DesktopViewPosition"];
+    return (num != nil) ? [num unsignedIntegerValue] : DesktopViewPositionTopRight;
+}
+
 -(void)addBarViewWithKind: (EventBarKind)kind {
     self.barView = [ViewCreatorStub makeViewWithKind:kind];
     
     self.barView.translatesAutoresizingMaskIntoConstraints = NO;
     self.barView.alphaValue = 0;
     [self.view addSubview:self.barView];
-    
+   
+    // Activate Height & Width
     [NSLayoutConstraint activateConstraints:@[
-        [self.barView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [self.barView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:30],
-        
         [self.barView.widthAnchor constraintEqualToConstant:340],
-        [self.barView.heightAnchor constraintEqualToConstant:75],
+        [self.barView.heightAnchor constraintEqualToConstant:75]
     ]];
+    
+    DesktopViewPosition pos = [DesktopViewController HUDPosition];
+    
+    switch (pos) {
+        case DesktopViewPositionTopLeft:
+            [NSLayoutConstraint activateConstraints:@[
+                [self.barView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:30],
+                [self.barView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:50],
+            ]];
+            break;
+        case DesktopViewPositionTopRight:
+            [NSLayoutConstraint activateConstraints:@[
+                [self.barView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+                [self.barView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:50],
+            ]];
+            break;
+        case DesktopViewPositionBottomLeft:
+            [NSLayoutConstraint activateConstraints:@[
+                [self.barView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:30],
+                [self.barView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-30],
+            ]];
+            break;
+        case DesktopViewPositionBottomRight:
+            [NSLayoutConstraint activateConstraints:@[
+                [self.barView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+                [self.barView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-30],
+            ]];
+            break;
+        default:
+            break;
+    }
     
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
         context.duration = 0.40;
