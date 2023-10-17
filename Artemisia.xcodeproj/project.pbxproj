@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE0C70F12ADA9E7900EE23AD /* DisplayServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0C70F02ADA9E7900EE23AD /* DisplayServices.framework */; };
+		CE0C70F22ADA9E7900EE23AD /* DisplayServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE0C70F02ADA9E7900EE23AD /* DisplayServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE0C70FB2ADAA04500EE23AD /* DesktopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C70FA2ADAA04500EE23AD /* DesktopViewController.m */; };
+		CE0C70FE2ADAA0FD00EE23AD /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0C70FD2ADAA0FD00EE23AD /* WindowController.m */; };
+		CE60BAB52ADC149800FA9225 /* SystemUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CE60BAB42ADC149800FA9225 /* SystemUtilities.m */; };
+		CE8288232ADAAC010045538A /* ViewCreatorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8288222ADAAC010045538A /* ViewCreatorStub.swift */; };
+		CE8288272ADAACDF0045538A /* EventBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8288262ADAACDF0045538A /* EventBarView.swift */; };
+		CEBE93532ADDC11E002AF39E /* MacControlCenterUI in Frameworks */ = {isa = PBXBuildFile; productRef = CEBE93522ADDC11E002AF39E /* MacControlCenterUI */; };
+		CEEEBE0F2ADA7C940087CB1C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBE0E2ADA7C940087CB1C /* AppDelegate.m */; };
+		CEEEBE142ADA7C960087CB1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEEEBE132ADA7C960087CB1C /* Assets.xcassets */; };
+		CEEEBE192ADA7C960087CB1C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBE182ADA7C960087CB1C /* main.m */; };
+		CEEEBE212ADA7CB80087CB1C /* EventMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEEBE202ADA7CB80087CB1C /* EventMonitor.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE0C70EF2ADA9D9900EE23AD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CE0C70F22ADA9E7900EE23AD /* DisplayServices.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CE0C70EC2ADA9D9900EE23AD /* CoreDisplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreDisplay.framework; path = ../../../../System/Library/Frameworks/CoreDisplay.framework; sourceTree = "<group>"; };
+		CE0C70F02ADA9E7900EE23AD /* DisplayServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DisplayServices.framework; path = ../../../../System/Library/PrivateFrameworks/DisplayServices.framework; sourceTree = "<group>"; };
+		CE0C70F32ADA9EDF00EE23AD /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		CE0C70FA2ADAA04500EE23AD /* DesktopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DesktopViewController.m; sourceTree = "<group>"; };
+		CE0C70FC2ADAA05900EE23AD /* DesktopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DesktopViewController.h; sourceTree = "<group>"; };
+		CE0C70FD2ADAA0FD00EE23AD /* WindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		CE0C70FF2ADAA10300EE23AD /* WindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		CE60BAB42ADC149800FA9225 /* SystemUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemUtilities.m; sourceTree = "<group>"; };
+		CE60BAB62ADC149F00FA9225 /* SystemUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemUtilities.h; sourceTree = "<group>"; };
+		CE8288222ADAAC010045538A /* ViewCreatorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCreatorStub.swift; sourceTree = "<group>"; };
+		CE8288262ADAACDF0045538A /* EventBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBarView.swift; sourceTree = "<group>"; };
+		CE8288282ADAADF50045538A /* EventKind.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventKind.h; sourceTree = "<group>"; };
+		CEEEBE0A2ADA7C940087CB1C /* Artemisia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Artemisia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEEEBE0D2ADA7C940087CB1C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CEEEBE0E2ADA7C940087CB1C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CEEEBE132ADA7C960087CB1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEEEBE182ADA7C960087CB1C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEEEBE202ADA7CB80087CB1C /* EventMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventMonitor.m; sourceTree = "<group>"; };
+		CEEEBE222ADA7CBF0087CB1C /* EventMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventMonitor.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEEEBE072ADA7C940087CB1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE0C70F12ADA9E7900EE23AD /* DisplayServices.framework in Frameworks */,
+				CEBE93532ADDC11E002AF39E /* MacControlCenterUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE0C70EB2ADA9D9900EE23AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE0C70F02ADA9E7900EE23AD /* DisplayServices.framework */,
+				CE0C70EC2ADA9D9900EE23AD /* CoreDisplay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE60BAB32ADC146C00FA9225 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEBE202ADA7CB80087CB1C /* EventMonitor.m */,
+				CEEEBE222ADA7CBF0087CB1C /* EventMonitor.h */,
+				CE60BAB42ADC149800FA9225 /* SystemUtilities.m */,
+				CE60BAB62ADC149F00FA9225 /* SystemUtilities.h */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		CE8288242ADAACA40045538A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEBE182ADA7C960087CB1C /* main.m */,
+				CEEEBE0D2ADA7C940087CB1C /* AppDelegate.h */,
+				CEEEBE0E2ADA7C940087CB1C /* AppDelegate.m */,
+				CE0C70FD2ADAA0FD00EE23AD /* WindowController.m */,
+				CE0C70FF2ADAA10300EE23AD /* WindowController.h */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CE8288252ADAACB90045538A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CE0C70FA2ADAA04500EE23AD /* DesktopViewController.m */,
+				CE0C70FC2ADAA05900EE23AD /* DesktopViewController.h */,
+				CE8288282ADAADF50045538A /* EventKind.h */,
+				CE8288222ADAAC010045538A /* ViewCreatorStub.swift */,
+				CE8288262ADAACDF0045538A /* EventBarView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CEEEBE012ADA7C940087CB1C = {
+			isa = PBXGroup;
+			children = (
+				CEEEBE0C2ADA7C940087CB1C /* Artemisia */,
+				CEEEBE0B2ADA7C940087CB1C /* Products */,
+				CE0C70EB2ADA9D9900EE23AD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CEEEBE0B2ADA7C940087CB1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEBE0A2ADA7C940087CB1C /* Artemisia.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEEEBE0C2ADA7C940087CB1C /* Artemisia */ = {
+			isa = PBXGroup;
+			children = (
+				CE8288242ADAACA40045538A /* App */,
+				CE8288252ADAACB90045538A /* UI */,
+				CE60BAB32ADC146C00FA9225 /* Backend */,
+				CEEEBE132ADA7C960087CB1C /* Assets.xcassets */,
+				CE0C70F32ADA9EDF00EE23AD /* Bridge.h */,
+			);
+			path = Artemisia;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEEEBE092ADA7C940087CB1C /* Artemisia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEEEBE1D2ADA7C960087CB1C /* Build configuration list for PBXNativeTarget "Artemisia" */;
+			buildPhases = (
+				CEEEBE062ADA7C940087CB1C /* Sources */,
+				CEEEBE072ADA7C940087CB1C /* Frameworks */,
+				CEEEBE082ADA7C940087CB1C /* Resources */,
+				CE0C70EF2ADA9D9900EE23AD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Artemisia;
+			packageProductDependencies = (
+				CEBE93522ADDC11E002AF39E /* MacControlCenterUI */,
+			);
+			productName = Artemisia;
+			productReference = CEEEBE0A2ADA7C940087CB1C /* Artemisia.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEEEBE022ADA7C940087CB1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					CEEEBE092ADA7C940087CB1C = {
+						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
+					};
+				};
+			};
+			buildConfigurationList = CEEEBE052ADA7C940087CB1C /* Build configuration list for PBXProject "Artemisia" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEEEBE012ADA7C940087CB1C;
+			packageReferences = (
+				CEBE93512ADDC11E002AF39E /* XCRemoteSwiftPackageReference "MacControlCenterUI" */,
+			);
+			productRefGroup = CEEEBE0B2ADA7C940087CB1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEEEBE092ADA7C940087CB1C /* Artemisia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEEEBE082ADA7C940087CB1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEEEBE142ADA7C960087CB1C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEEEBE062ADA7C940087CB1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE0C70FE2ADAA0FD00EE23AD /* WindowController.m in Sources */,
+				CE8288232ADAAC010045538A /* ViewCreatorStub.swift in Sources */,
+				CEEEBE192ADA7C960087CB1C /* main.m in Sources */,
+				CEEEBE0F2ADA7C940087CB1C /* AppDelegate.m in Sources */,
+				CEEEBE212ADA7CB80087CB1C /* EventMonitor.m in Sources */,
+				CE60BAB52ADC149800FA9225 /* SystemUtilities.m in Sources */,
+				CE0C70FB2ADAA04500EE23AD /* DesktopViewController.m in Sources */,
+				CE8288272ADAACDF0045538A /* EventBarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CEEEBE1B2ADA7C960087CB1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CEEEBE1C2ADA7C960087CB1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CEEEBE1E2ADA7C960087CB1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9735M962H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.serena.Artemisia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = Artemisia/Bridge.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
+			};
+			name = Debug;
+		};
+		CEEEBE1F2ADA7C960087CB1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9735M962H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.serena.Artemisia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = Artemisia/Bridge.h;
+				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEEEBE052ADA7C940087CB1C /* Build configuration list for PBXProject "Artemisia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEEEBE1B2ADA7C960087CB1C /* Debug */,
+				CEEEBE1C2ADA7C960087CB1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEEEBE1D2ADA7C960087CB1C /* Build configuration list for PBXNativeTarget "Artemisia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEEEBE1E2ADA7C960087CB1C /* Debug */,
+				CEEEBE1F2ADA7C960087CB1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEBE93512ADDC11E002AF39E /* XCRemoteSwiftPackageReference "MacControlCenterUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NSAntoine/MacControlCenterUI.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEBE93522ADDC11E002AF39E /* MacControlCenterUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEBE93512ADDC11E002AF39E /* XCRemoteSwiftPackageReference "MacControlCenterUI" */;
+			productName = MacControlCenterUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = CEEEBE022ADA7C940087CB1C /* Project object */;
+}

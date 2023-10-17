@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "maccontrolcenterui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NSAntoine/MacControlCenterUI.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "520159dcb9b4a54a9891725338c93b2fdaf10fbb"
+      }
+    },
+    {
+      "identity" : "menubarextraaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MenuBarExtraAccess",
+      "state" : {
+        "revision" : "f5896b47e15e114975897354c7e1082c51a2bffd",
+        "version" : "1.0.5"
+      }
+    }
+  ],
+  "version" : 2
+}
