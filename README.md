@@ -2,8 +2,11 @@
 ## Beautify your Volume/Brightness HUDs. 
 Artemisia beautifies your Volume/Brightness HUD by getting rid of the intrusive stock one and replacing it with a beautiful, non-obstructive UI.
 
-https://github.com/NSAntoine/Artemisia/assets/48022799/4a539516-4ef4-4c10-a589-360327bc3e68
+https://github.com/NSAntoine/Artemisia/assets/48022799/5f085f2d-b724-40db-831b-314f3014094a
 
-<img width="357" height="120" alt="Volume Demonstration" src="https://github.com/NSAntoine/Artemisia/assets/48022799/bea58d12-c751-4cce-8801-0e65ed215130"> <img width="357" height="120" alt="Brightness Demonstration" src="https://github.com/NSAntoine/Artemisia/assets/48022799/8ecc0151-52a2-4cd9-91cb-bb7e49650a5e">
+<img width="340" alt="Screenshot 2023-10-17 at 7 32 47 PM" src="https://github.com/NSAntoine/Artemisia/assets/48022799/69d091dc-97b4-4b0e-bfae-34b3425cf4b3">
+
+<img width="340" alt="Screenshot 2023-10-17 at 7 18 45 PM" src="https://github.com/NSAntoine/Artemisia/assets/48022799/79fbf88d-363d-405c-8cba-976d8bf20c99">
+
 
 Available for macOS 11+.
