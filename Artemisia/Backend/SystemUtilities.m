@@ -10,7 +10,7 @@
 #import "SystemUtilities.h"
 
 /* Yes, they're both the same value */
-#define VOLUME_CHANGE_CONSTANT (0.0625)
+#define SYSTEM_VOLUME_CHANGE_CONSTANT (0.0625)
 #define BRIGHTNESS_CHANGE_CONSTANT (0.0625)
 
 #define NORMALIZE_VALUE(value, min, max) MIN(MAX(min, value), max);
@@ -105,10 +105,15 @@ extern CGError DisplayServicesSetBrightness(CGDirectDisplayID display, float bri
     return setStatus == noErr;
 }
 
+- (float)volumeChangeAmount {
+    float fl = [NSUserDefaults.standardUserDefaults floatForKey:@"VolumeChangeAmount"];
+    return (fl) ? fl : SYSTEM_VOLUME_CHANGE_CONSTANT;
+}
+
 - (float)increaseVolume {
     float volume = [self currentVolume];
     
-    float newValue = NORMALIZE_VALUE(volume + VOLUME_CHANGE_CONSTANT, 0, 1);
+    float newValue = NORMALIZE_VALUE(volume + [self volumeChangeAmount], 0, 1);
     bool succeeded = [self setVolume: newValue];
     return succeeded ? newValue : volume;
 }
@@ -116,7 +121,7 @@ extern CGError DisplayServicesSetBrightness(CGDirectDisplayID display, float bri
 - (float)decreaseVolume {
     float volume = [self currentVolume];
     
-    float newValue = NORMALIZE_VALUE(volume - VOLUME_CHANGE_CONSTANT, 0, 1);
+    float newValue = NORMALIZE_VALUE(volume - [self volumeChangeAmount], 0, 1);
     bool succeeded = [self setVolume: newValue];
     return succeeded ? newValue : volume;
 }
