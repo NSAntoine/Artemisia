@@ -11,14 +11,17 @@
 #import <Cocoa/Cocoa.h>
 #import <CoreAudio/CoreAudio.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface SystemUtilites : NSObject
-+(instancetype)sharedUtilities;
+
+@property (class, readonly) SystemUtilites *sharedUtilities NS_SWIFT_NAME(shared);
 
 -(float)currentVolume;
 
 -(bool)setVolume: (float)newValue;
--(float)decreaseVolume;
--(float)increaseVolume;
+-(float)decreaseVolume: (bool)fractional;
+-(float)increaseVolume: (bool)fractional;
 
 @property BOOL isAudioMuted;
 
@@ -27,9 +30,11 @@
 -(float)displayBrightnessWithDisplayID:  (CGDirectDisplayID)displayID;
 
 -(bool)setBrightnessWithDisplayID:       (CGDirectDisplayID)displayID newValue: (float)newValue;
--(float)increaseBrightnessWithDisplayID: (CGDirectDisplayID)displayID;
--(float)decreaseBrightnessWithDisplayID: (CGDirectDisplayID)displayID;
+-(float)increaseBrightnessWithDisplayID: (CGDirectDisplayID)displayID isFractional: (bool)isFractional;
+-(float)decreaseBrightnessWithDisplayID: (CGDirectDisplayID)displayID isFractional: (bool)isFractional;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif /* SystemUtilities_h */

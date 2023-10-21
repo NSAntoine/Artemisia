@@ -11,7 +11,7 @@
 #import <Cocoa/Cocoa.h>
 #import "EventKind.h"
 
-typedef void(^EventKindUpdate)(EventBarKind, EventBarKindChange);
+typedef void(^EventKindUpdate)(EventBarKind, EventBarKindChange, bool);
 
 @interface EventMonitor : NSObject
 
@@ -22,7 +22,7 @@ typedef void(^EventKindUpdate)(EventBarKind, EventBarKindChange);
 
 -(void)startMonitoring;
 -(void)pauseMonitoring;
--(void)updateWithKind: (EventBarKind) kind change: (EventBarKindChange)change;
+-(void)updateWithKind: (EventBarKind) kind change: (EventBarKindChange)change isFractional: (bool)isFractional;
 
 @end
 

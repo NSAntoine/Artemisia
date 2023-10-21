@@ -24,17 +24,15 @@ struct EventBarView: View {
                 // fetch initial value
                 initiallyFetchValues()
                 
-                EventMonitor.shared().updateCallback = { newValue, changeKind in
+                EventMonitor.shared().updateCallback = { newValue, changeKind, isFractional in
                     self.kind = newValue
                     
                     withAnimation(Animation.smooth) {
                         switch newValue {
                         case .volume:
-                            self.currentValue = CGFloat(SystemUtilites.sharedUtilities().currentVolume())
-                            handleVolumeChange(change: changeKind)
+                            handleVolumeChange(change: changeKind, isFractional: isFractional)
                         case .brightness:
-                            self.currentValue = CGFloat(SystemUtilites.sharedUtilities().displayBrightness(withDisplayID: currentDisplayID()))
-                            handleBrightnessChange(change: changeKind)
+                            handleBrightnessChange(change: changeKind, isFractional: isFractional)
                         }
                     }
                 }
@@ -48,27 +46,25 @@ struct EventBarView: View {
     func initiallyFetchValues() {
         switch kind {
         case .volume:
-            self.currentValue = SystemUtilites.sharedUtilities().isAudioMuted ? 0 : CGFloat(SystemUtilites.sharedUtilities().currentVolume())
+            self.currentValue = SystemUtilites.shared.isAudioMuted ? 0 : CGFloat(SystemUtilites.shared.currentVolume())
         case .brightness:
-            self.currentValue = CGFloat(SystemUtilites.sharedUtilities().displayBrightness(withDisplayID: currentDisplayID()))
+            self.currentValue = CGFloat(SystemUtilites.shared.displayBrightness(withDisplayID: currentDisplayID()))
         }
     }
     
-    func setCurrentValueAuto(to new: CGFloat) {
-        self.currentValue = new
-    }
-    
-    func handleBrightnessChange(change: EventBarKindChange) {
+    func handleBrightnessChange(change: EventBarKindChange, isFractional: Bool) {
         switch change {
         case .increase:
-            setCurrentValueAuto(to: CGFloat(SystemUtilites.sharedUtilities().increaseBrightness(withDisplayID: currentDisplayID())))
+            self.currentValue = CGFloat(SystemUtilites.shared.increaseBrightness(withDisplayID: currentDisplayID(), 
+                                                                                            isFractional: isFractional))
         case .decrease:
-            setCurrentValueAuto(to: CGFloat(SystemUtilites.sharedUtilities().decreaseBrightness(withDisplayID: currentDisplayID())))
+            self.currentValue = CGFloat(SystemUtilites.shared.decreaseBrightness(withDisplayID: currentDisplayID(),
+                                                                                            isFractional: isFractional))
         default:
             break
         }
         
-//        print(SystemUtilites.sharedUtilities().displayBrightness(withDisplayID: currentDisplayID()))
+//        print(SystemUtilites.shared.displayBrightness(withDisplayID: currentDisplayID()))
     }
     
     func currentDisplayID() -> CGDirectDisplayID {
@@ -79,20 +75,18 @@ struct EventBarView: View {
         return (screen?.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? CGDirectDisplayID) ?? CGMainDisplayID()
     }
     
-    func handleVolumeChange(change: EventBarKindChange) {
+    func handleVolumeChange(change: EventBarKindChange, isFractional: Bool) {
         switch change {
         case .increase:
-            if SystemUtilites.sharedUtilities().isAudioMuted { SystemUtilites.sharedUtilities().isAudioMuted = false }
-            setCurrentValueAuto(to: CGFloat(SystemUtilites.sharedUtilities().increaseVolume()))
+            if SystemUtilites.shared.isAudioMuted { SystemUtilites.shared.isAudioMuted = false }
+            self.currentValue = CGFloat(SystemUtilites.shared.increaseVolume(isFractional))
         case .decrease:
-            if SystemUtilites.sharedUtilities().isAudioMuted { SystemUtilites.sharedUtilities().isAudioMuted = false }
-            setCurrentValueAuto(to: CGFloat(SystemUtilites.sharedUtilities().decreaseVolume()))
+            if SystemUtilites.shared.isAudioMuted { SystemUtilites.shared.isAudioMuted = false }
+            self.currentValue = CGFloat(SystemUtilites.shared.decreaseVolume(isFractional))
         case .muted:
-            SystemUtilites.sharedUtilities().isAudioMuted.toggle()
+            SystemUtilites.shared.isAudioMuted.toggle()
             
-            if SystemUtilites.sharedUtilities().isAudioMuted {
-                self.currentValue = 0
-            }
+            self.currentValue = CGFloat(SystemUtilites.shared.isAudioMuted ? 0 : SystemUtilites.shared.currentVolume())
         }
     }
     
@@ -107,7 +101,7 @@ struct EventBarView: View {
                 Spacer()
             }
             MenuSlider(value: $currentValue, image: BrightnessSliderImage()) { /* newValue from gesture, so we can't use onChange(of:)*/ newValue in
-                SystemUtilites.sharedUtilities().setBrightnessWithDisplayID(currentDisplayID(), newValue: Float(newValue))
+                SystemUtilites.shared.setBrightnessWithDisplayID(currentDisplayID(), newValue: Float(newValue))
             }
                 .padding(.horizontal)
         case .volume:
@@ -118,8 +112,8 @@ struct EventBarView: View {
                 Spacer()
             }
             MenuVolumeSlider(value: $currentValue) { newValue in
-                if SystemUtilites.sharedUtilities().isAudioMuted { SystemUtilites.sharedUtilities().isAudioMuted = false }
-                SystemUtilites.sharedUtilities().setVolume(Float(newValue))
+                if SystemUtilites.shared.isAudioMuted { SystemUtilites.shared.isAudioMuted = false }
+                SystemUtilites.shared.setVolume(Float(newValue))
             }
                 .padding(.horizontal)
         }

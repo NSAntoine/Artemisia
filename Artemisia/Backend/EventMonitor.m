@@ -26,22 +26,28 @@ CGEventRef _eventMonitorCallback(CGEventTapProxy prox, CGEventType type, CGEvent
     uint32_t keyFlags = (nsEvent.data1 & 0x0000FFFF);
     bool isKeyDown = (((keyFlags & 0xFF00) >> 8)) == 0xA;
     
+    CGEventFlags flags = CGEventGetFlags(event);
+    // on stock macOS, if you press the volume or brightness up/down buttons
+    // while holding down shift & option
+    // then the change will be 1/5 of it's usual
+    bool isFractional = (flags & kCGEventFlagMaskShift) && (flags & kCGEventFlagMaskAlternate);
+    
     if (isKeyDown) {
         switch (keyCode) {
             case NX_KEYTYPE_SOUND_DOWN:
-                [EventMonitor.sharedMonitor updateWithKind: EventBarKindVolume change: EventBarKindChangeDecrease];
+                [EventMonitor.sharedMonitor updateWithKind: EventBarKindVolume change: EventBarKindChangeDecrease isFractional:isFractional];
                 return nil;
             case NX_KEYTYPE_SOUND_UP:
-                [EventMonitor.sharedMonitor updateWithKind: EventBarKindVolume change: EventBarKindChangeIncrease];
+                [EventMonitor.sharedMonitor updateWithKind: EventBarKindVolume change: EventBarKindChangeIncrease isFractional:isFractional];
                 return nil;
             case NX_KEYTYPE_MUTE:
-                [EventMonitor.sharedMonitor updateWithKind: EventBarKindVolume change:EventBarKindChangeMuted];
+                [EventMonitor.sharedMonitor updateWithKind: EventBarKindVolume change:EventBarKindChangeMuted isFractional:isFractional];
                 return nil;
             case NX_KEYTYPE_BRIGHTNESS_DOWN:
-                [EventMonitor.sharedMonitor updateWithKind: EventBarKindBrightness change: EventBarKindChangeDecrease];
+                [EventMonitor.sharedMonitor updateWithKind: EventBarKindBrightness change: EventBarKindChangeDecrease isFractional:isFractional];
                 return nil;
             case NX_KEYTYPE_BRIGHTNESS_UP:
-                [EventMonitor.sharedMonitor updateWithKind: EventBarKindBrightness change: EventBarKindChangeIncrease];
+                [EventMonitor.sharedMonitor updateWithKind: EventBarKindBrightness change: EventBarKindChangeIncrease isFractional:isFractional];
                 return nil;
             default:
                 break;
@@ -63,11 +69,11 @@ CGEventRef _eventMonitorCallback(CGEventTapProxy prox, CGEventType type, CGEvent
     return monitor;
 }
 
-- (void)updateWithKind:(EventBarKind)kind change:(EventBarKindChange)change {
+- (void)updateWithKind:(EventBarKind)kind change:(EventBarKindChange)change isFractional:(bool)isFractional {
     [AppDelegate.sharedDelegate.desktopVC retainOrAddBarViewWithKind:kind];
     
     if (self.updateCallback)
-        self.updateCallback(kind, change);
+        self.updateCallback(kind, change, isFractional);
 }
 
 - (void)startMonitoring {

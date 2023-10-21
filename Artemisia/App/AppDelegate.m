@@ -53,10 +53,6 @@
     NSMenuItem *quit = [menu addItemWithTitle:@"Quit" action:@selector(terminateApp) keyEquivalent:@"q"];
     quit.target = self;
     
-    /*
-     [NSUserDefaults.standardUserDefaults setFloat:0.5 forKey:@"VolumeChangeAmount"];
-     */
-    
     self.statusItem.menu = menu;
 }
 

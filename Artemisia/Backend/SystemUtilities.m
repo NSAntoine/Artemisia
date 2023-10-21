@@ -105,28 +105,29 @@ extern CGError DisplayServicesSetBrightness(CGDirectDisplayID display, float bri
     return setStatus == noErr;
 }
 
-- (float)volumeChangeAmount {
-    float fl = [NSUserDefaults.standardUserDefaults floatForKey:@"VolumeChangeAmount"];
-    return (fl) ? fl : SYSTEM_VOLUME_CHANGE_CONSTANT;
+- (float)volumeChangeAmount: (bool)fractionally {
+    float fromDefaults = [NSUserDefaults.standardUserDefaults floatForKey:@"VolumeChangeAmount"];
+    float final = (fromDefaults) ? fromDefaults : SYSTEM_VOLUME_CHANGE_CONSTANT;
+    return fractionally ? final / 5 : final;
 }
 
-- (float)increaseVolume {
+- (float)increaseVolume:(bool)fractional {
     float volume = [self currentVolume];
     
-    float newValue = NORMALIZE_VALUE(volume + [self volumeChangeAmount], 0, 1);
+    float newValue = NORMALIZE_VALUE(volume + [self volumeChangeAmount:fractional], 0, 1);
     bool succeeded = [self setVolume: newValue];
     return succeeded ? newValue : volume;
 }
 
-- (float)decreaseVolume {
+- (float)decreaseVolume:(bool)fractional {
     float volume = [self currentVolume];
     
-    float newValue = NORMALIZE_VALUE(volume - [self volumeChangeAmount], 0, 1);
+    float newValue = NORMALIZE_VALUE(volume - [self volumeChangeAmount:fractional], 0, 1);
     bool succeeded = [self setVolume: newValue];
     return succeeded ? newValue : volume;
 }
 
-- (bool)isAudioMuted {
+- (BOOL)isAudioMuted {
     AudioDeviceID deviceID = [self audioDeviceID];
     
     uint32_t isMuted = 0;
@@ -235,20 +236,22 @@ extern CGError DisplayServicesSetBrightness(CGDirectDisplayID display, float bri
     }
 }
 
-- (float)increaseBrightnessWithDisplayID:(CGDirectDisplayID)displayID {
+-(float)brightnessChangeAmount: (bool)isFractional {
+    return isFractional ? BRIGHTNESS_CHANGE_CONSTANT / 5 : BRIGHTNESS_CHANGE_CONSTANT;
+}
+
+- (float)increaseBrightnessWithDisplayID:(CGDirectDisplayID)displayID isFractional:(bool)isFractional {
     float cur = [self displayBrightnessWithDisplayID:displayID];
     
-    float newValue = NORMALIZE_VALUE(cur + BRIGHTNESS_CHANGE_CONSTANT, 0, 1);
-//    float newValue = cur + BRIGHTNESS_CHANGE_CONSTANT;
+    float newValue = NORMALIZE_VALUE(cur + [self brightnessChangeAmount:isFractional], 0, 1);
     bool succeeded = [self setBrightnessWithDisplayID:CGMainDisplayID() newValue: newValue];
     return succeeded ? newValue : cur;
 }
 
-- (float)decreaseBrightnessWithDisplayID:(CGDirectDisplayID)displayID {
+- (float)decreaseBrightnessWithDisplayID:(CGDirectDisplayID)displayID isFractional:(bool)isFractional {
     float cur = [self displayBrightnessWithDisplayID:displayID];
     
-    float newValue = NORMALIZE_VALUE(cur - BRIGHTNESS_CHANGE_CONSTANT, 0, 1)
-//    float newValue = cur - BRIGHTNESS_CHANGE_CONSTANT;
+    float newValue = NORMALIZE_VALUE(cur - [self brightnessChangeAmount:isFractional], 0, 1)
     bool succeeded = [self setBrightnessWithDisplayID:CGMainDisplayID() newValue: newValue];
     
     return succeeded ? newValue : cur;
