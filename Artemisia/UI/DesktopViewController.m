@@ -76,17 +76,18 @@
     DesktopViewPosition pos = [DesktopViewController HUDPosition];
     
 //    printf("isVisible: %s\n", [NSMenu menuBarVisible] ? "Yes" : "No");
+    CGFloat topConst = 40;
     switch (pos) {
         case DesktopViewPositionTopLeft:
             [NSLayoutConstraint activateConstraints:@[
                 [self.barView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:30],
-                [self.barView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:30],
+                [self.barView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:topConst],
             ]];
             break;
         case DesktopViewPositionTopRight:
             [NSLayoutConstraint activateConstraints:@[
                 [self.barView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-                [self.barView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:30],
+                [self.barView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:topConst],
             ]];
             break;
         case DesktopViewPositionBottomLeft:
